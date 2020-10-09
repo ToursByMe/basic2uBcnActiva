@@ -34,24 +34,24 @@ function letterPosition() {
     let finalArr = [];
     
     //get the name
-    let name1 = document.getElementById('nombre').value;
+    let name = document.getElementById('nombre').value;
 
-    name1 = cleanStr(name1);
+    name = cleanStr(name);
 
-    name1 = checkOnlyLetters(name1);
+    name = checkOnlyLetters(name);
 
-    console.log(name1);
+    console.log(name);
 
     //now I am an array and separated
-    name1 = name1.split("");
+    name = name.split("");
     
-    console.log(name1);
+    console.log(name);
 
-    for(let i = 0; i < name1.length; i++) {
+    for(let i = 0; i < name.length; i++) {
 
-        console.log(` ${name1[i]},position ${i + 1} `);
+        console.log(` ${name[i]},position ${i + 1} `);
 
-       finalArr.push(name1[i]);
+       finalArr.push(name[i]);
         
     }
 
@@ -72,22 +72,22 @@ function findVocal() {
     let empty = "";
     
      //get the name
-     let name1 = document.getElementById('nombre').value;
+     let name = document.getElementById('nombre').value;
 
-    // name1 = checkOnlyNum(name1);
+    // name = checkOnlyNum(name);
 
-     name1 = cleanStr(name1);
+     name = cleanStr(name);
  
-     console.log(name1);
+     console.log(name);
 
      //enunciat mostra uppercases
-     name1 = name1.toUpperCase();
+     name = name.toUpperCase();
 
      //regex & match?
 
-     let isAmatch = name1.match(vowelReg);
-     let numMatch = name1.match(numReg);
-     let conMatch = name1.match(consonantReg);
+     let isAmatch = name.match(vowelReg);
+     let numMatch = name.match(numReg);
+     let conMatch = name.match(consonantReg);
 
      console.log(isAmatch);
      console.log(numMatch);
@@ -102,7 +102,7 @@ function findVocal() {
 
 
     //for loop 
-    for (let letter of name1) {
+    for (let letter of name) {
 
         if (vowels.includes(letter)){
 
@@ -133,17 +133,17 @@ function letterMap() {
     console.log('fase3 works');
 
     //get the name
-    let name1 = document.getElementById('nombre').value;
+    let name = document.getElementById('nombre').value;
 
-    name1 = cleanStr(name1);
+    name = cleanStr(name);
    
-    console.log(name1);
+    console.log(name);
   
     //enunciat mostra uppercases
-    name1 = name1.toUpperCase();
+    name = name.toUpperCase();
 
     //convert it into arr
-    let newArr = name1.split("");
+    let newArr = name.split("");
 
     //object of desire
 
@@ -179,17 +179,41 @@ function repeatLetter() {
     console.log('fase4 works');
 
     //get the name
-    let name1 = document.getElementById('nombre').value;
-    // name1 = checkOnlyNum(name1);
+    let name    = document.getElementById('nombre').value;
+
+    let surname = document.getElementById('apellido').value;
     
-     name1 = onlyOneSpace(name1);
     
-     console.log(name1);
+     name    = onlyOneSpace(name);
+     surname = onlyOneSpace(surname);
     
+     console.log(name);
+     console.log(surname);
+
+    /**********************concat str *****************************************/
+    let strTogether = name.concat(surname);
      //enunciat mostra uppercases
-     let newArr = name1.split("").map(letter => (letter.toUpperCase()));
+     let newArr = strTogether.split("").map(letter => (letter.toUpperCase()));
+      newArr.splice(6, 0, " ");
 
      console.log(newArr);
+
+     /******************************concat arr **********************************/
+    let nameArr = name.split("");
+    let surnameArr = surname.split("");
+
+    let arrTogether = nameArr.concat(surnameArr);
+    let upper = arrTogether.map(e => e.toUpperCase());
+     upper.splice(6, 0, " ");
+
+     /********************ES6 ******************************/
+     let newArr3 = [...name,  ...surname].map(e => e.toUpperCase());
+      newArr3.splice(6, 0, " ");
+
+    console.log(arrTogether);
+    console.log(upper);
+    console.log(newArr3);
+
     
 }
 
@@ -230,7 +254,7 @@ const onlyOneSpace = (str) => str.replace(/\s+/g, ' ').trim();
 //https://www.codegrepper.com/code-examples/javascript/count+vowels+and+consonants+in+javascript
 
 //Fase dos one liner
-//let oneLine = name1.split('').filter(vocal => vocal.match(vowelReg) != null).length;
+//let oneLine = name.split('').filter(vocal => vocal.match(vowelReg) != null).length;
 
 /**
  * ['elem', 'another', 'name'].map((value, index, originalArray) => { 
@@ -241,3 +265,8 @@ const onlyOneSpace = (str) => str.replace(/\s+/g, ' ').trim();
  //only one white space
  //https://stackoverflow.com/questions/6163169/replace-multiple-whitespaces-with-single-whitespace-in-javascript-string
 
+//merge arrays
+//https://www.samanthaming.com/tidbits/49-2-ways-to-merge-arrays/
+
+//splice split slice
+//https://medium.com/@jeanpan/javascript-splice-slice-split-745b1c1c05d2
