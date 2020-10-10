@@ -264,7 +264,14 @@ function cleanStr(str) {
 const onlyOneSpace = (str) => str.replace(/\s+/g, ' ').trim();
 
 //clean fileds
-const cleanFields = () => document.getElementsByClassName('myLead').innerHTML = "";
+function cleanFields() {
+
+    document.getElementById('answer').innerHTML = "";
+    document.getElementById('answer1').innerHTML = "";
+    document.getElementById('answer2').innerHTML = "";
+
+}
+
 
 /**************************DOCUMENTACION ********************/
 //VOWELS
