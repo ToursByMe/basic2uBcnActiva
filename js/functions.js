@@ -29,6 +29,8 @@ function letterPosition() {
     
     console.log('fase1 works');
 
+    cleanFields();
+
     //the answer goes here
     let text;
     let finalArr = [];
@@ -55,12 +57,14 @@ function letterPosition() {
         
     }
 
-     document.getElementById('answer').innerHTML = finalArr.join();
+     document.getElementById('answer').innerHTML = finalArr.join().toUpperCase();
     
 }
 function findVocal() {
 
     console.log('fase2 works');
+
+    cleanFields();
 
     //vowels
     let text = "";
@@ -79,9 +83,6 @@ function findVocal() {
      name = cleanStr(name);
  
      console.log(name);
-
-     //enunciat mostra uppercases
-     name = name.toUpperCase();
 
      //regex & match?
 
@@ -106,17 +107,17 @@ function findVocal() {
 
         if (vowels.includes(letter)){
 
-            text = `He trobat la VOCAL:${letter}\n`;
+            text += `He trobat la VOCAL:${letter.toUpperCase()}${'<br>'}`;
 
             console.log(text);
         } else if ( numbers.includes(letter)) {
 
-            num = `Tú no treballes a Star Wars i el teu nom no hauria de tenir el número ${letter} you fool!\n`;
+            num += `Tú no treballes a Star Wars i el teu nom no hauria de tenir el número ${letter} you fool!${'<br>'}`;
 
             console.log(num)
         } else {
 
-            consonant = `He trobat la CONSONANT:${letter}\n`;
+            consonant += `He trobat la CONSONANT:${letter.toUpperCase()}${'<br>'}`;
 
             console.log(consonant);
 
@@ -124,13 +125,17 @@ function findVocal() {
 
     }
     
-
+    document.getElementById('answer').innerHTML = text;
+    document.getElementById('answer1').innerHTML = num;
+    document.getElementById('answer2').innerHTML = consonant;    
 
     
 }
 function letterMap() {
 
     console.log('fase3 works');
+
+    cleanFields();
 
     //get the name
     let name = document.getElementById('nombre').value;
@@ -144,6 +149,9 @@ function letterMap() {
 
     //convert it into arr
     let newArr = name.split("");
+
+    //pintado
+    let text = "";
 
     //object of desire
 
@@ -165,7 +173,12 @@ function letterMap() {
     for(let content in obj) {
 
         console.log(`The letter ${content}: ${obj[content]} times`);
+        
+        text += `The letter ${content}: ${obj[content]} times ${'<br>'}`;
+        
     }
+
+    document.getElementById('answer').innerHTML = text;
     
     //Isma, vull mirar-ho mes a prop
     // se que el map té les mateixes caracteristiques que els obj
@@ -177,6 +190,8 @@ function letterMap() {
 function repeatLetter() {
 
     console.log('fase4 works');
+
+    cleanFields();
 
     //get the name
     let name    = document.getElementById('nombre').value;
@@ -248,6 +263,8 @@ function cleanStr(str) {
 //only one white space between name and surname
 const onlyOneSpace = (str) => str.replace(/\s+/g, ' ').trim();
 
+//clean fileds
+const cleanFields = () => document.getElementsByClassName('myLead').innerHTML = "";
 
 /**************************DOCUMENTACION ********************/
 //VOWELS
