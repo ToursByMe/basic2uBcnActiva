@@ -209,7 +209,7 @@ function repeatLetter() {
     let strTogether = name.concat(surname);
      //enunciat mostra uppercases
      let newArr = strTogether.split("").map(letter => (letter.toUpperCase()));
-      newArr.splice(6, 0, " ");
+      newArr.splice((name.length -1), 0, " ");
 
      console.log(newArr);
 
@@ -219,11 +219,11 @@ function repeatLetter() {
 
     let arrTogether = nameArr.concat(surnameArr);
     let upper = arrTogether.map(e => e.toUpperCase());
-     upper.splice(6, 0, " ");
+     upper.splice((name.length -1), 0, " ");
 
      /********************ES6 ******************************/
      let newArr3 = [...name,  ...surname].map(e => e.toUpperCase());
-      newArr3.splice(6, 0, " ");
+      newArr3.splice((name.length -1), 0, " ");
 
     console.log(arrTogether);
     console.log(upper);
