@@ -20,6 +20,7 @@ let consonants = ['b', 'c', 'ç', 'd', 'f', 'g', 'h', 'j', 'l', 'l.l', 'm', 'n',
 let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
  //regex global
+ //gi stands for insensitive, but in mine is sensitive. something is not right
  let vowelReg     = /[aeiou]/gi;
  let numReg       = /\d+/g;
  let consonantReg = /[bcçdfghjklmnñpqrstvwxys]/gi;
@@ -54,10 +55,12 @@ function letterPosition() {
         console.log(` ${name[i]},position ${i + 1} `);
 
        finalArr.push(name[i]);
+
+       text = finalArr.join().toUpperCase();
         
     }
 
-     document.getElementById('answer').innerHTML = finalArr.join().toUpperCase();
+     document.getElementById('answer').innerHTML = text;
     
 }
 function findVocal() {
@@ -209,7 +212,7 @@ function repeatLetter() {
     let strTogether = name.concat(surname);
      //enunciat mostra uppercases
      let newArr = strTogether.split("").map(letter => (letter.toUpperCase()));
-      newArr.splice((name.length -1), 0, " ");
+      newArr.splice((name.length), 0, " ");
 
      console.log(newArr);
 
@@ -219,11 +222,11 @@ function repeatLetter() {
 
     let arrTogether = nameArr.concat(surnameArr);
     let upper = arrTogether.map(e => e.toUpperCase());
-     upper.splice((name.length -1), 0, " ");
+     upper.splice((name.length), 0, " ");
 
      /********************ES6 ******************************/
      let newArr3 = [...name,  ...surname].map(e => e.toUpperCase());
-      newArr3.splice((name.length -1), 0, " ");
+      newArr3.splice((name.length), 0, " ");
 
     console.log(arrTogether);
     console.log(upper);
